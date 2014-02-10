@@ -1,4 +1,4 @@
-# nowplaying-geektool
+# NowPlaying (GeekTool)
 
 A geeklet and its associated AppleScript that displays what the currently playing iTunes song.
 
