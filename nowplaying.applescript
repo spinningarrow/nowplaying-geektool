@@ -6,24 +6,40 @@ end tell
 
 if myList contains "iTunes" then
 	tell application "iTunes"
+		if player state is stopped then
+			return
+		end if
+
 		set trackname to name of current track
 		set artistname to artist of current track
 		set albumname to album of current track
 
-		set trackduration to duration of current track
-		set trackposition to player position
-		set elapsed to round (trackposition / trackduration * 100)
-
 		if player state is playing then
-			set output to ""
+			set state to 1
 		else if player state is paused then
-			set output to "❙❙ "
+			set state to 0
 		else
-			set output to ""
+			set state to -1
 		end if
+	end tell
+else if myList contains "Vox" then
+	tell application "Vox"
+		set trackname to track
+		set artistname to artist
+		set albumname to album
 
-		set output to output & trackname & " – " & artistname & " (" & albumname & ")"
+		set state to player state
 	end tell
 else
-	set output to ""
+	return
 end if
+
+if state is 1 then
+	set pauseIcon to ""
+else if state is 0 then
+	set pauseIcon to "❙❙ "
+else
+	set pauseIcon to ""
+end if
+
+return pauseIcon & trackname & " – " & artistname & " (" & albumname & ")"
