@@ -8,11 +8,11 @@
 	ZmZmAAAAAIY=
 	</data>
 	<key>Command</key>
-	<string>~/bin/nowplaying.applescript | awk '{print toupper($0)}' | awk '{
+	<string>~/bin/nowplaying.applescript | awk '{
   if (length($0) &gt; 80)
-    print substr($0,1,80)"…"
+    print toupper(substr($0,1,80))"…"
   else
-    print $0
+    print toupper($0)
 }'</string>
 	<key>DisplayStatusImage</key>
 	<false/>
