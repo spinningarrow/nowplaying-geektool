@@ -8,7 +8,7 @@
 	ZmZmAAAAAIY=
 	</data>
 	<key>Command</key>
-	<string>~/bin/nowplaying.applescript | awk '{
+	<string> osascript ~/bin/nowplaying.applescript | awk '{
   if (length($0) &gt; 80)
     print toupper(substr($0,1,80))"…"
   else
