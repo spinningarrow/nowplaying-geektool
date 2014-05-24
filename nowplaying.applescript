@@ -5,24 +5,36 @@ tell application "System Events"
 end tell
 
 if myList contains "iTunes" then
-	tell application "iTunes"
-		if player state is stopped then
-			return
-		end if
-
-		set trackname to name of current track
-		set artistname to artist of current track
-		set albumname to album of current track
-
-		if player state is playing then
-			set state to 1
-		else if player state is paused then
-			set state to 0
-		else
-			set state to -1
-		end if
-	end tell
+	set player to "iTunes"
+else if myList contains "Spotify" then
+	set player to "Spotify"
 else if myList contains "Vox" then
+	set player to "Vox"
+else
+	return
+end if
+
+if player is "iTunes" or player is "Spotify" then
+	using terms from application "iTunes"
+		tell application player
+			if player state is stopped then
+				return
+			end if
+
+			set trackname to name of current track
+			set artistname to artist of current track
+			set albumname to album of current track
+
+			if player state is playing then
+				set state to 1
+			else if player state is paused then
+				set state to 0
+			else
+				set state to -1
+			end if
+		end tell
+	end
+else if player is "Vox" then
 	tell application "Vox"
 		set trackname to track
 		set artistname to artist
