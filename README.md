@@ -1,6 +1,6 @@
 # NowPlaying (GeekTool)
 
-A geeklet and its associated AppleScript that displays what the currently playing iTunes or Vox song (iTunes takes precedence if both are open).
+A geeklet and its associated AppleScript that displays the currently playing iTunes, Spotify or Vox song (in that order of preference).
 
 The script remains blank if no track is playing, and shows a pause icon if the track is paused.
 
